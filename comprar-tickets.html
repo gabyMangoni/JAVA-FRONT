@@ -81,6 +81,45 @@ padding: 15px 0;
        
         </style>
 
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var cantidadSelect = document.getElementById('cantidad');
+    var categoriaSelect = document.getElementById('categoria');
+    
+    cantidadSelect.addEventListener('change', calcularTotal);
+    categoriaSelect.addEventListener('change', calcularTotal);
+  });
+
+  function calcularTotal() {
+    var cantidadSelect = document.getElementById('cantidad');
+    var categoriaSelect = document.getElementById('categoria');
+    var totalDiv = document.getElementById('totalDiv');
+
+    var cantidad = parseInt(cantidadSelect.value);
+    var categoria = categoriaSelect.value;
+    var precio = 200;
+    var descuento = 0;
+
+    switch (categoria) {
+      case 'estudiante':
+        descuento = 0.8;
+        break;
+      case 'trainee':
+        descuento = 0.5;
+        break;
+      case 'junior':
+        descuento = 0.15;
+        break;
+    }
+
+    var total = Math.ceil(cantidad * precio * (1 - descuento));
+    totalDiv.textContent = 'Total a Pagar: ' + total + ' pesos';
+  }
+</script>
+
+
     <title>Trabajo Integrador</title>
   </head>
   <body>
@@ -89,8 +128,8 @@ padding: 15px 0;
       <div class="row header-bg">
         <div class="row">
           <div class="d-sm-flex justify-content-between">
-            <div class="text-white"><a  href="index.html" ><img src="./codoacodo.png" width="100px" alt="" class="logo"></a> Conf Bs As</div>
-            <div class="text-white">
+          <div class="text-white"><a  href="index.html" ><img src="./codoacodo.png" width="100px" alt="" class="logo"></a> Conf Bs As</div>
+          <div class="text-white">
             <nav class="navbar navbar-dark bg-dark justify-content-end blanco">
             <ul class="nav">
               <li class="nav-item">
@@ -117,74 +156,45 @@ padding: 15px 0;
     </header>
     <main>
       <!-- banner ppal -->
-      <div class="row">
-      <div class="col banner">
-        <div class="hijo">
-        <div class="blanco h2" >Conf Bs As</div>
-        <div>Bs As llega por primera vez a Argentina. Un evento para compartir con</div>
-        <div>nuestra comunidad el conocimiento y experiencia de los expertos que</div>
-        <div>estan creado el futuro de Internet. ven a conocer a miembros del</div>
-        <div>evento, a otros estudiates de Codo a Codo y oradores de primer</div>
-        <div>nivel que tenemos para ti. Te esperamos!</div>
-<div class="mt-4"><button type="button" class="btn btn-outline-light">Quiero ser orador</button> <button type="button" class="btn btn-success">Comprar Tickets</button></div>
-      </div>
-      </div>
+      <div class="row mt-4">
+        <div class="col col-sm-4 text-center">
+          <div class="card border-primary" style="width:100%;">
+            <div class="card-body">
+              <h5 class="card-title">Estudiante</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Tienen un descuento</h6>
+              <p class="card-text"><span class="h5">80</span>%</p>
+              <p class="card-text text-muted "><small>* Presentar documentación</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="col col-sm-4 text-center">
+          <div class="card border-info" style="width:100%;">
+            <div class="card-body">
+              <h5 class="card-title">Trainee</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Tienen un descuento</h6>
+              <p class="card-text"><span class="h5">50</span>%</p>
+              <p class="card-text text-muted "><small>* Presentar documentación</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="col col-sm-4 text-center">
+          <div class="card border-warning" style="width:100%;">
+            <div class="card-body">
+              <h5 class="card-title">Junior</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Tienen un descuento</h6>
+              <p class="card-text"><span class="h5">15</span>%</p>
+              <p class="card-text text-muted "><small>* Presentar documentación</small></p>
+
+            </div>
+          </div>
+        </div>
     </div>
 <!-- oradores -->
 <div class="row"> 
-  <div class="container-fluid justify-content-center w-75">
-    <div class="col text-center text-uppercase f-xs ">Conoce a los</div>
-    <div class="col text-center text-uppercase f-md">Oradores</div>
-      <div class="row row-cols-1 row-cols-md-3 ">
-        <div class="col">
-          <div class="card">
-            <img src="./steve.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div><span class="badge bg-warning text-dark">JavaScript</span> <span class="badge bg-info text-dark">React</span></div>
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed delectus deserunt provident earum et repellat, unde dignissimos ad eveniet porro!</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="./bill.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div><span class="badge bg-warning text-dark">JavaScript</span> <span class="badge bg-info text-dark">React</span></div>
-              <h5 class="card-title">Bill Gates</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed delectus deserunt provident earum et repellat, unde dignissimos ad eveniet porro!</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="./ada.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div><span class="badge bg-secondary">Negocios</span> <span class="badge bg-danger">Startup</span></div>
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed delectus deserunt provident earum et repellat, unde dignissimos ad eveniet porro!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-   
-
-      <div class="d-sm-flex w-100 justify-content-between mt-4 mb-4">
-      <div class="w-50 border border-1"><img src="./honolulu.jpg" width="100%" ></div>
-      <div class="w-50 border border-1 bg-secondary p-4"> 
-        
-        <div>
-        <div class="blanco h2" >Bs As - Octubre </div>
-        <div class="text-white">Bs As es la provincia y localidad más grande del estado de Argentina, en los Estados Unidos. Honolulu es la mas sureña de entre las principales ciudades estadounidenses. Aunque el nombre se refiere al área urbana en la costa sureste de la isla de Oahu, la ciudad y el condao de Honolulu han formado una ciudad-condado consolidad que cubre toda la ciudad (aproximandamente 600km2 de superficie).</div>
-
-        <div class="mt-4"><button type="button" class="btn btn-outline-light">Conocé más</button></div>
-      </div></div>
-    </div>
+ 
     <div class="container-fluid justify-content-center w-75">
-      <div class="col text-center text-uppercase f-xs ">Conviértete en un</div>
-      <div class="col text-center text-uppercase f-md">Orador</div>
-      <div class="col text-center">Anótate como orador para dar una <abbr title="attribute">charla ignite</abbr>. Cuéntanos de que quieres hablar!</div>
+      <div class="col text-center text-uppercase f-xs ">venta</div>
+      <div class="col text-center text-uppercase f-md">Valor del ticket $200</div>
       <div class="row mt-3">
         <div class="col">
           <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre">
@@ -193,18 +203,41 @@ padding: 15px 0;
           <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido">
         </div>
       </div> 
-      <div class="mt-3">
-        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Sobre que quieres hablar?" rows="3"></textarea>
+      <div class="row mt-3">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Correo" aria-label="Correo">
+        </div>
       </div>
-      <div class="row row-cols-1 row-cols-md-3 ">
-          <div class="col">
-Recuerda incluir un título para tu charla
-          </div>
+      <div class="row mt-3">
+        <div class="col">
+          <select class="form-select" aria-label="Default select example" id="cantidad">
+            <option selected>Seleccione una cantidad</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+        <div class="col">
+          <select class="form-select" aria-label="Default select example" id="categoria">
+            <option selected>Seleccione una categoria</option>
+            <option value="estudiante">Estudiante</option>
+            <option value="trainee">Trainee</option>
+            <option value="junior">Junior</option>
 
+          </select>        </div>
+      </div> 
+      <div class="row mt-3">
+          <div class="col alert alert-primary w-100 mx-2" id="totalDiv">Total a Pagar $: 0</div>
         </div>
         <div class="row mt-4 mb-4">
           <div class="col">
-            <button class="btn btn-lg lima w-100" role="link" onclick="window.location='comprar-tickets.html'">Comprar Tickets</button>
+            <button type="reset" class="btn btn-lg lima w-100" >Borrar</button>
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-lg lima w-100">Resumen</button>
           </div>
 
         </div>
